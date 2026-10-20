@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Kampus</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>Layanan Kampus</h1>
+        <p>Portal sederhana untuk kebutuhan mahasiswa</p>
+    </header>
+
+    <nav>
+        <button class="nav-link active" data-page="beranda">Beranda</button>
+        <button class="nav-link" data-page="registrasi">Registrasi</button>
+        <button class="nav-link" data-page="kodepos">Pencarian Kode Pos</button>
+        <button class="nav-link" data-page="program">Program Studi</button>
+    </nav>
+
+    <main>
+        <!-- HALAMAN BERANDA -->
+        <section id="beranda" class="page active">
+            <h2>Selamat Datang</h2>
+            <p>
+                Gunakan layanan ini untuk mengisi registrasi mahasiswa,
+                mencari informasi kode pos, dan memilih program studi.
+            </p>
+
+            <div class="service-list">
+                <article class="service-card">
+                    <h3>Registrasi Mahasiswa</h3>
+                    <p>Isi data mahasiswa dan informasi perkuliahan.</p>
+                    <button class="open-page" data-page="registrasi">
+                        Buka Registrasi
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <h3>Pencarian Kode Pos</h3>
+                    <p>Cari kode pos berdasarkan wilayah tempat tinggal.</p>
+                    <button class="open-page" data-page="kodepos">
+                        Cari Kode Pos
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <h3>Program Studi</h3>
+                    <p>Pilih fakultas dan program studi yang tersedia.</p>
+                    <button class="open-page" data-page="program">
+                        Lihat Program
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- HALAMAN REGISTRASI -->
+        <section id="registrasi" class="page">
+            <h2>Registrasi Mahasiswa</h2>
+            <p>Lengkapi informasi berikut untuk melakukan registrasi.</p>
+
+            <form id="registrationForm">
+                <label for="nama">Nama Mahasiswa</label>
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    list="daftarNama"
+                    placeholder="Masukkan nama mahasiswa"
+                    required
+                >
+
+                <datalist id="daftarNama">
+                    <option value="Andi Pratama">
+                    <option value="Budi Santoso">
+                    <option value="Citra Lestari">
+                    <option value="Dina Maharani">
+                    <option value="Fajar Ramadhan">
+                </datalist>
+
+                <label for="nim">NIM</label>
+                <input
+                    type="text"
+                    id="nim"
+                    name="nim"
+                    placeholder="Masukkan NIM"
+                    required
+                >
+
+                <label for="mataKuliah">Mata Kuliah</label>
+                <select id="mataKuliah" name="mataKuliah" required>
+                    <option value="">Pilih mata kuliah</option>
+                    <option value="Pemrograman Web">Pemrograman Web</option>
+                    <option value="Basis Data">Basis Data</option>
+                    <option value="Struktur Data">Struktur Data</option>
+                    <option value="Jaringan Komputer">Jaringan Komputer</option>
+                </select>
+
+                <label for="dosen">Dosen Pengampu</label>
+                <select id="dosen" name="dosen" required>
+                    <option value="">Pilih dosen</option>
+                    <option value="Dr. Ahmad">Dr. Ahmad</option>
+                    <option value="Ibu Siti">Ibu Siti</option>
+                    <option value="Bapak Budi">Bapak Budi</option>
+                    <option value="Ibu Rina">Ibu Rina</option>
+                </select>
+
+                <label for="email">Email Mahasiswa</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="nama@email.com"
+                    required
+                >
+
+                <label for="password">Kata Sandi</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    minlength="6"
+                    placeholder="Minimal 6 karakter"
+                    required
+                >
+
+                <button type="submit">Kirim Registrasi</button>
+            </form>
+
+            <div id="registrationResult" class="result" aria-live="polite"></div>
+        </section>
+
+        <!-- HALAMAN PENCARIAN KODE POS -->
+        <section id="kodepos" class="page">
+            <h2>Pencarian Kode Pos</h2>
+            <p>Pilih wilayah untuk melihat informasi kode pos.</p>
+
+            <form id="postalForm">
+                <label for="provinsi">Provinsi</label>
+                <select id="provinsi" required>
+                    <option value="">Pilih provinsi</option>
+                </select>
+
+                <label for="kota">Kota/Kabupaten</label>
+                <select id="kota" required disabled>
+                    <option value="">Pilih kota/kabupaten</option>
+                </select>
+
+                <label for="kecamatan">Kecamatan</label>
+                <select id="kecamatan" required disabled>
+                    <option value="">Pilih kecamatan</option>
+                </select>
+
+                <button type="submit">Cari Kode Pos</button>
+            </form>
+
+            <div id="postalResult" class="result" aria-live="polite"></div>
+
+            <p class="note">
+                Catatan: data kode pos di halaman ini merupakan contoh terbatas
+                untuk demonstrasi, bukan basis data seluruh wilayah Indonesia.
+            </p>
+        </section>
+
+        <!-- HALAMAN PROGRAM STUDI -->
+        <section id="program" class="page">
+            <h2>Pilihan Program Studi</h2>
+            <p>Pilih fakultas untuk melihat program studi yang tersedia.</p>
+
+            <form id="programForm">
+                <label for="fakultas">Fakultas</label>
+                <select id="fakultas" required>
+                    <option value="">Pilih fakultas</option>
+                    <option value="teknologi">Fakultas Teknologi</option>
+                    <option value="ekonomi">Fakultas Ekonomi</option>
+                    <option value="hukum">Fakultas Hukum</option>
+                </select>
+
+                <label for="prodi">Program Studi</label>
+                <select id="prodi" required disabled>
+                    <option value="">Pilih program studi</option>
+                </select>
+
+                <button type="submit">Lihat Pilihan</button>
+            </form>
+
+            <div id="programResult" class="result" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Layanan Kampus</p>
+    </footer>
+
+</body>
+</html>
